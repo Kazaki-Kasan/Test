@@ -1,40 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Geist:wght@400;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
+  --color-surface-dim: #051424;
+  --color-surface-variant: #273647;
+  --color-surface-container: #122131;
+  --color-primary-fixed: #7df4ff;
+  --color-primary-fixed-dim: #00dbe9;
+  --color-surface-container-low: #0d1c2d;
+  --color-surface-container-highest: #273647;
+  --color-outline: #849495;
+  --color-primary: #dbfcff;
+  --color-primary-container: #00f0ff;
+  --color-on-primary-container: #006970;
+  --color-secondary: #c6c5d2;
+  --color-surface: #051424;
+  --color-on-surface: #d4e4fa;
+  --color-on-surface-variant: #b9cacb;
+  --color-surface-container-high: #1c2b3c;
+  --color-tertiary-fixed-dim: #c1c5e5;
+
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-geist: "Geist", monospace;
 }
 
-/* Custom core visual utilities */
-html, body, #root {
+body, html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
   background-color: #051424;
-  color: #d4e4fa;
-  font-family: var(--font-sans);
 }
 
 .glass-panel {
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, rgba(39, 54, 71, 0.45) 0%, rgba(5, 20, 36, 0.65) 100%);
+  background: linear-gradient(135deg, rgba(39, 54, 71, 0.3) 0%, rgba(5, 20, 36, 0.5) 100%);
+}
+
+.sidebar-panel {
+  backdrop-filter: blur(32px);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(5, 20, 36, 0.7);
 }
 
 .active-glow {
-  box-shadow: 0px 0px 20px rgba(0, 219, 233, 0.25);
+  box-shadow: 0px 0px 30px rgba(0, 219, 233, 0.25);
 }
 
 @keyframes pulse-cyan {
-  0% { transform: scale(0.97); opacity: 0.6; }
-  50% { transform: scale(1.03); opacity: 1; }
-  100% { transform: scale(0.97); opacity: 0.6; }
+  0% { transform: scale(0.96); opacity: 0.5; }
+  50% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(0.96); opacity: 0.5; }
 }
 
 .animate-pulse-cyan {
-  animation: pulse-cyan 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse-cyan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+.scanline {
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 219, 233, 0.08);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { top: 0% }
+  100% { top: 100% }
+}
+
+/* Custom scrollbars for technical log terminal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 219, 233, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 219, 233, 0.5);
+}

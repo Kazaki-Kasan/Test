@@ -1,34 +1,27 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-export type NodeStatus = 'ONLINE' | 'STANDBY' | 'OFFLINE';
-
-export interface SystemNode {
+export interface Protocol {
   id: string;
   name: string;
-  status: NodeStatus;
-  heat: number;      // percentage 0-100
-  frequency: number; // in GHz
-  load: number;      // percentage 0-100
+  code: string;
+  color: string;
+  textColor: string;
+  latencyBase: number;
+  energyLevel: number;
+  stability: 'STABLE' | 'OPTIMAL' | 'DEGRADED' | 'CRITICAL' | 'CYCLIC';
+  atmosphere: number;
+  radiation: number;
   description: string;
 }
 
-export type LogLevel = 'INFO' | 'WARNING' | 'SUCCESS' | 'CRITICAL';
-
-export interface DiagnosticLog {
+export interface LogMessage {
   id: string;
   timestamp: string;
-  level: LogLevel;
-  message: string;
+  text: string;
+  type: 'info' | 'warning' | 'success' | 'critical';
 }
 
-export interface CoreTelemetry {
-  latency: number;             // ms
-  energyLevel: number;         // percentage
-  containmentStrength: number; // percentage
-  particleDensity: number;     // percentage (affects particle visual count)
-  coreFrequency: number;       // GHz (affects rotation speed)
-  systemStatus: 'OPTIMAL' | 'RECALIBRATING' | 'WARNING' | 'DEGRADED';
+export interface Subsystem {
+  id: string;
+  name: string;
+  status: 'OPTIMAL' | 'STABLE' | 'DEGRADED' | 'OFFLINE' | 'CALIBRATING';
+  level: number;
 }
