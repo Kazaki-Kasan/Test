@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Core",
+  "description": "Operational interface for monitoring core system latency, energy levels, and synthetic protocol calibrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
